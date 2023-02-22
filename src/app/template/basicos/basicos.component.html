@@ -77,13 +77,20 @@
   <div class="col">
     <span class="badge text-bg-primary">Valid</span>
     <pre>{{ miFormulario.valid }}</pre>
+
     <span class="badge text-bg-warning">Pristine</span>
     <pre>{{ miFormulario.pristine }}</pre>
+
     <span class="badge text-bg-info">Touched</span>
     <pre>{{ miFormulario.touched }}</pre>
+
     <span class="badge text-bg-danger">Value</span>
     <pre>{{ miFormulario.value | json }}</pre>
+
     <span class="badge text-bg-danger">CustomDirective</span>
-    <pre>{{  miFormulario.controls["existencias"]?.errors | json  }}</pre>
+    <pre>{{
+      miFormulario.controls["existencias"] &&
+        miFormulario.controls["existencias"].errors | json
+    }}</pre>
   </div>
 </div>
