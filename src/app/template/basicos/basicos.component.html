@@ -19,8 +19,17 @@
             ngModel
             name="producto"
             required
+            minlength="3"
           />
-          <span class="form-text text-danger">Debe ser de 3 letras</span>
+
+          <span
+            class="form-text text-danger"
+            *ngIf="
+              miFormulario.controls['producto']?.invalid &&
+              miFormulario.controls['producto'].touched
+            "
+            >Debe ser de 3 letras</span
+          >
         </div>
       </div>
       <!-- CAMPO DE PRECIO -->
@@ -34,6 +43,7 @@
             ngModel
             name="precio"
             required
+            min="0"
           />
         </div>
       </div>
@@ -64,9 +74,13 @@
 
 <div class="row">
   <div class="col">
-    <span>Valid</span>
+    <span class="badge text-bg-primary">Valid</span>
     <pre>{{ miFormulario.valid }}</pre>
-    <span>Value</span>
+    <span class="badge text-bg-warning">Pristine</span>
+    <pre>{{ miFormulario.pristine }}</pre>
+    <span class="badge text-bg-info">Touched</span>
+    <pre>{{ miFormulario.touched }}</pre>
+    <span class="badge text-bg-danger">Value</span>
     <pre>{{ miFormulario.value | json }}</pre>
   </div>
 </div>
