@@ -30,7 +30,15 @@ export class DinamicosComponent {
 
     ]
   }
-
+  nuevoJuego: string = '';
+  agregarJuego() {
+    const nuevoFavorito: Favorito = {
+      id: this.persona.favoritos.length + 1,
+      nombre: this.nuevoJuego
+    }
+    this.persona.favoritos.push({ ...nuevoFavorito });
+    this.nuevoJuego = ''
+  }
 
   guardar() {
     console.log(this.miFormulario.value)
@@ -38,5 +46,6 @@ export class DinamicosComponent {
   eliminar(index: number) {
     this.persona.favoritos.splice(index, 1)
   }
+
 
 }
