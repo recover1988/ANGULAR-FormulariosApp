@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col">
-    <form autocomplete="off">
+    <form autocomplete="off" [formGroup]="miFormulario">
       <!-- CAMPO DE PRODUCTO -->
       <div class="mb3 row">
         <label class="col-sm-3 col-form-label">Producto</label>
@@ -12,6 +12,7 @@
             type="text"
             class="form-control"
             placeholder="Nombre del producto"
+            formControlName="nombre"
           />
 
           <span class="form-text text-danger">Debe ser de 3 letras</span>
@@ -54,7 +55,7 @@
   </div>
 </div>
 
-<!-- <div class="row">
+<div class="row">
   <div class="col">
     <span class="badge text-bg-primary">Valid</span>
     <pre>{{ miFormulario.valid }}</pre>
@@ -68,10 +69,10 @@
     <span class="badge text-bg-danger">Value</span>
     <pre>{{ miFormulario.value | json }}</pre>
 
-    <span class="badge text-bg-danger">CustomDirective</span>
+    <!-- <span class="badge text-bg-danger">CustomDirective</span>
     <pre>{{
       miFormulario.controls["existencias"] &&
         miFormulario.controls["existencias"].errors | json
-    }}</pre>
+    }}</pre> -->
   </div>
-</div> -->
+</div>
