@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@ang
   styles: [
   ]
 })
-export class BasicosComponent {
+export class BasicosComponent implements OnInit {
 
   miFormulario: FormGroup = this.fb.group({
     'nombre': [null, [Validators.required, Validators.minLength(3)]],
@@ -27,13 +27,20 @@ export class BasicosComponent {
       return;
     }
 
-
-
     console.log(this.miFormulario.value)
+    this.miFormulario.reset();
   }
 
 
   constructor(private fb: FormBuilder) { };
+
+  ngOnInit(): void {
+    this.miFormulario.reset({
+      nombre: 'RTX-4800',
+      precio: 1800,
+      existencias: 12
+    })
+  }
 }
 
 /*
