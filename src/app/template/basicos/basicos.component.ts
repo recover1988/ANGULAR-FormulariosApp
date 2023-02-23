@@ -12,6 +12,13 @@ export class BasicosComponent {
 
   @ViewChild('miFormulario') miFormulario!: NgForm;
 
+  initForm = {
+    producto: 'RTX-1233',
+    precio: 10,
+    existencias: 12
+
+  }
+
   nombreValido(): boolean {
     return this.miFormulario?.controls['producto']?.invalid && this.miFormulario?.controls['producto'].touched;
   };
@@ -22,5 +29,9 @@ export class BasicosComponent {
   // guardar(miFormulario: NgForm) {
   guardar() {
     console.log(this.miFormulario.value, 'asd')
+    this.miFormulario.resetForm({
+      precio: 0,
+      existencias: 0
+    });
   };
 }
