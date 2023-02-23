@@ -10,18 +10,30 @@
   >
     {{ item.texto }}
   </li>
-
 </ul>
 <h2 class="mt-5">Reactive</h2>
 <hr />
 
 <ul class="list-group">
-<li
-*ngFor="let item of reactiveMenu"
-[routerLink]="item.ruta"
-class="list-group-item"
-routerLinkActive="active"
->
-{{ item.texto }}
-</li>
+  <li
+    *ngFor="let item of reactiveMenu"
+    [routerLink]="item.ruta"
+    class="list-group-item"
+    routerLinkActive="active"
+  >
+    {{ item.texto }}
+  </li>
+</ul>
+<h2 class="mt-5">Validaciones</h2>
+<hr />
+
+<ul class="list-group">
+  <li
+    *ngFor="let item of authMenu"
+    [routerLink]="item.ruta"
+    class="list-group-item"
+    routerLinkActive="active"
+  >
+    {{ item.texto }}
+  </li>
 </ul>
