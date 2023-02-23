@@ -1,7 +1,7 @@
 <h2>Reactivos: <small>Switches</small></h2>
 
 <hr />
-<form>
+<form [formGroup]="miFormulario" (ngSubmit)="guardar()">
   <!-- RADIO -->
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Género</label>
@@ -10,9 +10,9 @@
         <input
           class="form-check-input"
           type="radio"
-          name="radioGenero"
           id="radioMasculion"
           value="M"
+          formControlName="genero"
         />
         <label class="form-check-label" for="radioMasculion"> Masculino </label>
       </div>
@@ -20,9 +20,9 @@
         <input
           class="form-check-input"
           type="radio"
-          name="radioGenero"
           id="radioFemenino"
           value="F"
+          formControlName="genero"
         />
         <label class="form-check-label" for="radioFemenino"> Femenino </label>
       </div>
@@ -38,6 +38,7 @@
           type="checkbox"
           role="switch"
           id="flexSwitchCheckChecked"
+          formControlName="notificaciones"
         />
         <label class="form-check-label" for="flexSwitchCheckChecked"
           >Quiero recibir Notificaciones</label
@@ -50,7 +51,12 @@
     <label class="col-sm-3 col-form-label"></label>
     <div class="col-sm-9">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="flexCheckDefault" />
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="flexCheckDefault"
+          formControlName="condiciones"
+        />
         <label class="form-check-label" for="flexCheckDefault">
           Terminos y condiciones de uso
         </label>
@@ -61,12 +67,12 @@
 
   <div class="row">
     <div class="col">
-      <button class="btn btn-primary float-end">Guardar</button>
+      <button type="submit" class="btn btn-primary float-end">Guardar</button>
     </div>
   </div>
 </form>
 
-<!-- <h5 class="badge text-bg-primary">Valor del Formulario</h5>
+<h5 class="badge text-bg-primary">Valor del Formulario</h5>
 <pre>{{ miFormulario.value | json }}</pre>
 <br />
 <h5 class="badge text-bg-secondary">Persona</h5>
@@ -76,12 +82,12 @@
 <h5 class="badge text-bg-success">Valid</h5>
 <pre> {{ miFormulario.valid }} </pre>
 
-<h5 class="badge text-bg-danger">Terminos</h5>
+<!-- <h5 class="badge text-bg-danger">Terminos</h5>
 <pre>{{
   miFormulario.controls["terminos"] && miFormulario.controls["terminos"].errors
     | json
-}}</pre>
+}}</pre> -->
 
-<br />
+<!-- <br />
 <h5 class="badge text-bg-warning">Pristine</h5>
 <pre> {{ miFormulario.pristine }} </pre> -->
