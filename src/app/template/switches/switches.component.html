@@ -84,22 +84,22 @@
   </div>
 </form>
 
-<h5>Valor del Formulario</h5>
+<h5 class="badge text-bg-primary">Valor del Formulario</h5>
 <pre>{{ miFormulario.value | json }}</pre>
 <br />
-<h5>Persona</h5>
+<h5 class="badge text-bg-secondary">Persona</h5>
 <pre>{{ persona | json }}</pre>
 <br />
 
-<h5>Valid</h5>
+<h5 class="badge text-bg-success">Valid</h5>
 <pre> {{ miFormulario.valid }} </pre>
 
-<h5>Terminos</h5>
+<h5 class="badge text-bg-danger">Terminos</h5>
 <pre>{{
   miFormulario.controls["terminos"] && miFormulario.controls["terminos"].errors
     | json
 }}</pre>
 
 <br />
-
-<pre>Codiciones: {{ miFormulario.pristine }} </pre>
+<h5 class="badge text-bg-warning">Pristine</h5>
+<pre> {{ miFormulario.pristine }} </pre>
