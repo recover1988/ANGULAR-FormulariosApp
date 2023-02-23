@@ -21,7 +21,16 @@ export class BasicosComponent {
       this.miFormulario.controls[campo].touched
   }
 
+  guardar() {
+    if (this.miFormulario.invalid) {
+      this.miFormulario.markAllAsTouched();
+      return;
+    }
 
+
+
+    console.log(this.miFormulario.value)
+  }
 
 
   constructor(private fb: FormBuilder) { };
