@@ -11,13 +11,14 @@ import { ValidatorService } from '../../../shared/validator/validator.service';
 })
 export class RegistroComponent implements OnInit {
 
-  //TODO temporal
-
-
   miFormulario: FormGroup = this.fb.group({
     nombre: ['', [Validators.required, Validators.pattern(this.vs.nombreApellidoPattern)]],
     email: ['', [Validators.required, Validators.pattern(this.vs.emailPattern)]],
     username: ['', [Validators.required, this.vs.noPuedeSerStrider]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    password2: ['', [Validators.required]],
+  }, {
+    validators: [this.vs.camposIguales('password', 'password2')]
   })
 
   campoNoValido(campo: string) {
@@ -29,7 +30,6 @@ export class RegistroComponent implements OnInit {
 
     this.miFormulario.markAllAsTouched()
   }
-
 
 
 
