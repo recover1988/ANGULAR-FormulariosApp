@@ -22,21 +22,29 @@ export class RegistroComponent implements OnInit {
     validators: [this.vs.camposIguales('password', 'password2')]
   })
 
+
+
   campoNoValido(campo: string) {
     return this.miFormulario.get(campo)?.invalid && this.miFormulario.get(campo)?.touched
   }
 
   // EMAIL
 
-  emailRequired() {
-    return this.miFormulario.get('email')?.errors?.['required'] && this.miFormulario.get('email')?.touched
+
+  get emailErrorMsg(): string {
+    const errors = this.miFormulario.get('email')?.errors;
+    if (errors && errors['required']) {
+      return 'Email es obligatorio'
+    } else if (errors && errors['pattern']) {
+      return 'El valor ingresado no tiene formato de correo'
+    } else if (errors && errors['emailTomado']) {
+      return 'El email ya fue tomado'
+    }
+    return ''
   }
-  emailFormato() {
-    return this.miFormulario.get('email')?.errors?.['pattern'] && this.miFormulario.get('email')?.touched
-  }
-  emailTomado() {
-    return this.miFormulario.get('email')?.errors?.['emailTomado'] && this.miFormulario.get('email')?.touched
-  }
+
+
+
   // -----------
   submitFormulario() {
     console.log(this.miFormulario.value)
@@ -63,3 +71,12 @@ export class RegistroComponent implements OnInit {
     private emailValidator: EmailValidatorService
   ) { }
 }
+  // emailRequired() {
+  //   return this.miFormulario.get('email')?.errors?.['required'] && this.miFormulario.get('email')?.touched
+  // }
+  // emailFormato() {
+  //   return this.miFormulario.get('email')?.errors?.['pattern'] && this.miFormulario.get('email')?.touched
+  // }
+  // emailTomado() {
+  //   return this.miFormulario.get('email')?.errors?.['emailTomado'] && this.miFormulario.get('email')?.touched
+  // }
